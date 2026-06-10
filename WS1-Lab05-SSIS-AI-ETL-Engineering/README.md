@@ -8,11 +8,27 @@ Design and harden an AI-assisted SSIS pattern for industrial telemetry ingestion
 - SSIS tooling
 - Copilot (SSMS + VS brief support)
 
+## AI-first flow (majority AI work)
+1. AI/chat work (majority):
+  - Run Prompt Starter #1, Prompt Starter #2, and Prompt Starter #3 in Copilot Chat.
+  - Refine merge-hardening and failure-runbook outputs with at least one follow-up.
+2. Manual execution work (supporting validation):
+  - Execute setup SQL and replay tests to validate deduplication and reject handling.
+
 ## Setup
 Run scripts in this order:
 1. `sql/01_staging_tables.sql`
 2. `sql/02_merge_upsert.sql`
 3. `sql/03_error_handling.sql`
+
+## How to perform the key steps
+1. Execute setup scripts in order to create staging, merge logic, and batch error handling procedure.
+2. Prompt AI for package control flow plus data flow (landing, staging, quality checks, merge, reject path).
+3. Load sample rows into `dbo.TelemetryStaging`, including duplicate `MessageId` values and one malformed row.
+4. Run `EXEC dbo.usp_ProcessTelemetryBatch @SourceFileName = N'<batch-file-name>';`.
+5. Re-run the same batch and confirm replay safety (no duplicate rows in `dbo.TelemetryFact`).
+6. Verify malformed rows are captured in `dbo.TelemetryRejects` with clear reject reasons.
+7. Save the final package blueprint and failure-handling runbook.
 
 ## Exercises
 1. Package flow design
@@ -36,9 +52,15 @@ Run scripts in this order:
 - Ask AI to design retry policy and dead-letter handling with diagnostics.
 
 ## Prompt Starters
-- "Design an SSIS package for IIoT telemetry with idempotent merge, dedup, and error-routing. Return control-flow and data-flow steps."
-- "Harden this MERGE for replayed files and duplicate event IDs while preserving exactly-once semantics."
-- "Generate an operational runbook for SSIS load failures with triage queries."
+- Prompt Starter #1: "Design an SSIS package for IIoT telemetry with idempotent merge, dedup, and error-routing. Return control-flow and data-flow steps."
+- Prompt Starter #2: "Harden this MERGE for replayed files and duplicate event IDs while preserving exactly-once semantics."
+- Prompt Starter #3: "Generate an operational runbook for SSIS load failures with triage queries."
+
+## Prompt Playbook (when and how to fill)
+1. Before Prompt Starter #1 and Prompt Starter #3, fill section 6) Agent Prompt.
+2. Before Prompt Starter #2, fill section 2) Query Tuning Prompt for the merge-hardening request.
+3. If you change `dbo.usp_ProcessTelemetryBatch` contract expectations, fill section 3) Stored Procedure Prompt.
+4. In Validation Step, record replay-safety results and reject-table evidence after rerunning the same batch.
 
 ## Deliverables
 - SSIS package blueprint

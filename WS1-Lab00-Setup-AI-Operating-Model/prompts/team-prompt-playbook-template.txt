@@ -1,5 +1,12 @@
 Workshop 4 Prompt Playbook v1
 
+How to use this template (fill during each lab, not at the end):
+1) Pick the section that matches the prompt type you are about to run.
+2) Fill all fields before sending the prompt (draft version is fine).
+3) After refinement, replace draft wording with the exact final prompt text that worked.
+4) In Validation Step, record what you ran and whether it passed (row parity, runtime, test pass/fail, or security-safe behavior).
+5) Copy any section block if you need multiple entries of the same prompt type.
+
 1) Query Design Prompt
 Task:
 Context:
