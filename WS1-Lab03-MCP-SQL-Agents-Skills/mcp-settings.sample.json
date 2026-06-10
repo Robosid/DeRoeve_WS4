@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "sqlserver-workshop": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["dist/index.js"],
+      "cwd": "./WS1-Lab03-MCP-SQL-Agents-Skills/mcp-sqlserver-server",
+      "env": {
+        "SQL_CONNECTION_STRING": "Server=localhost;Database=WorkshopScada;User Id=sa;Password=Pass@word1;TrustServerCertificate=True"
+      }
+    }
+  }
+}

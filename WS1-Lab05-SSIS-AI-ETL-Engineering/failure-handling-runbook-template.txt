@@ -1,0 +1,27 @@
+SSIS Failure Handling Runbook
+
+1) Incident Intake
+- Pipeline/package:
+- Source file/batch id:
+- Failure timestamp:
+
+2) Initial Diagnostics
+- Check SQL Agent/SSIS logs
+- Check reject table counts
+- Check merge/upsert exceptions
+
+3) Triage Queries
+- Reject trend by reason
+- Duplicate message ids in staging
+- Missing machine code or null event time rows
+
+4) Recovery Actions
+- Reprocess safe subset
+- Quarantine malformed rows
+- Patch transformation rules
+- Rerun package with monitored execution
+
+5) Closeout
+- Evidence of row parity
+- Evidence of duplicate-free target
+- Preventive action logged

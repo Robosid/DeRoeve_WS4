@@ -1,0 +1,22 @@
+SSAS Partition and Incremental Refresh Strategy
+
+1) Partitioning key
+- Partition fact tables by EventDate (daily partitions).
+- Optional sub-partition by LineCode for large plants.
+
+2) Retention policy
+- Keep daily partitions for 90 days.
+- Merge into monthly partitions after day 90.
+
+3) Refresh cadence
+- Hot window: every 15 minutes for today and yesterday.
+- Warm window: hourly for previous 7 days.
+- Cold window: daily for older partitions if corrections are expected.
+
+4) Late-arriving data
+- Keep a correction window of last 3 days in each refresh run.
+- Reprocess impacted partitions when late rows are detected.
+
+5) Validation
+- Compare KPI parity with SQL baseline queries after each refresh.
+- Alert if KPI drift exceeds threshold (for example, abs delta > 0.3%).

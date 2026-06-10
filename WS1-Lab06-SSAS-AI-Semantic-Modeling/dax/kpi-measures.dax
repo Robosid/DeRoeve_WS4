@@ -1,0 +1,28 @@
+-- Core KPI Measures for WorkshopScadaSemanticModel
+
+Total Good := SUM ( FactProduction[GoodCount] )
+
+Total Reject := SUM ( FactProduction[RejectCount] )
+
+Total Produced := [Total Good] + [Total Reject]
+
+Operating Minutes :=
+VAR TotalWindow = SUM ( FactProduction[WindowMinutes] )
+VAR Downtime = SUM ( FactDowntime[DowntimeMinutes] )
+RETURN TotalWindow - Downtime
+
+Planned Production Minutes := SUM ( FactProduction[WindowMinutes] )
+
+Availability % := DIVIDE ( [Operating Minutes], [Planned Production Minutes] )
+
+Ideal Output :=
+SUMX (
+    FactProduction,
+    FactProduction[IdealPartsPerMinute] * FactProduction[WindowMinutes]
+)
+
+Performance % := DIVIDE ( [Total Produced], [Ideal Output] )
+
+Quality % := DIVIDE ( [Total Good], [Total Produced] )
+
+OEE % := [Availability %] * [Performance %] * [Quality %]

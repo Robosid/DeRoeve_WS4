@@ -1,0 +1,12 @@
+Security Remediation Checklist (SQL-focused)
+
+[ ] SQL injection vectors identified and removed
+[ ] Unsafe dynamic SQL replaced with parameterized execution
+[ ] Sort/order parameters constrained to allow-list
+[ ] Hardcoded credentials removed from SQL/code/config
+[ ] Sensitive properties/extended properties reviewed and scrubbed
+[ ] Minimum privileges verified for execution principals
+[ ] Test Agent coverage gaps closed
+[ ] Modernize Agent diff reviewed and accepted/rejected with rationale
+[ ] NuGet vulnerabilities triaged and remediated
+[ ] Validation payloads executed and blocked safely

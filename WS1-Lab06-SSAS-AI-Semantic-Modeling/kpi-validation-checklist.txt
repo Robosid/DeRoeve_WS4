@@ -1,0 +1,12 @@
+SSAS KPI Validation Checklist
+
+[ ] DAX Total Good matches SQL baseline
+[ ] DAX Total Reject matches SQL baseline
+[ ] Availability% parity within accepted tolerance
+[ ] Performance% parity within accepted tolerance
+[ ] Quality% parity within accepted tolerance
+[ ] OEE% parity within accepted tolerance
+[ ] Shift boundary behavior validated
+[ ] Late-arriving data impact validated
+[ ] Partition refresh did not regress KPI values
+[ ] Validation evidence saved

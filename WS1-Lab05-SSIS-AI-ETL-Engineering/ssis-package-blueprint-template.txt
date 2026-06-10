@@ -1,0 +1,33 @@
+SSIS Package Blueprint Template
+
+Package Name:
+Source System:
+Target Tables:
+
+Control Flow:
+1) Pre-check tasks
+2) Extract task
+3) Stage load task
+4) Quality validation task
+5) Merge/upsert task
+6) Post-load reconciliation task
+7) Error notification task
+
+Data Flow Components:
+- Source
+- Derived Column transformations
+- Data conversion checks
+- Conditional split (valid/invalid)
+- Destination (staging)
+- Error output destination (reject table)
+
+Reliability Controls:
+- Retry policy:
+- Idempotency key:
+- Late-arriving event handling:
+- Dead-letter routing:
+
+Validation:
+- Row parity query:
+- Duplicate check query:
+- SLA target:

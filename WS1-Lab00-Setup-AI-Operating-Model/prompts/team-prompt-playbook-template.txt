@@ -1,0 +1,43 @@
+Workshop 4 Prompt Playbook v1
+
+1) Query Design Prompt
+Task:
+Context:
+Constraints:
+Expected Output Format:
+Validation Step:
+
+2) Query Tuning Prompt
+Original Query:
+Observed Problem (runtime/plan):
+Optimization Goal:
+Expected Output Format:
+Validation Step:
+
+3) Stored Procedure Prompt
+Business Rule:
+Input Parameters:
+Output Contract:
+Error Handling Expectations:
+Validation Step:
+
+4) Reporting SQL Prompt (SSRS/Crystal)
+Report Goal:
+Dimensions and Filters:
+Time Window Rules:
+Expected Columns:
+Validation Step:
+
+5) Security Review Prompt
+Target SQL Object:
+Threat Focus:
+Required Fix Type:
+Expected Output Format:
+Validation Step:
+
+6) Agent Prompt (MCP/Background)
+Task:
+Allowed Scope:
+Required Artifacts:
+Success Criteria:
+Validation Step:

@@ -1,0 +1,17 @@
+SSRS and Crystal Expression Suggestions
+
+1) Percent formatting
+- Expression: =Format(Fields!RejectPct.Value / 100, "P2")
+- Use for display only; do not compute in report if SQL already returns the metric.
+
+2) Severity indicator text
+- Expression: =IIF(Fields!MaxSeverity.Value >= 4, "Critical", IIF(Fields!MaxSeverity.Value >= 2, "Warning", "Info"))
+
+3) Null-safe downtime display
+- Expression: =IIF(IsNothing(Fields!DowntimeMinutes.Value), 0, Fields!DowntimeMinutes.Value)
+
+4) Shift label
+- Expression: =Fields!ShiftName.Value & " (" & Format(Fields!ShiftStart.Value, "HH:mm") & " - " & Format(Fields!ShiftEnd.Value, "HH:mm") & ")"
+
+5) OEE quality flag
+- Expression: =IIF(Fields!OEEPct.Value < 0.65, "Investigate", "Within target")

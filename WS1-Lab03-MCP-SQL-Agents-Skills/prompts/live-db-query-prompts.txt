@@ -1,0 +1,16 @@
+MCP Live Query Prompt Pack
+
+1) Faulted machines
+Using MCP tool output only, list machines in fault state for more than 10 minutes. Include machine code, line code, duration, and evidence query.
+
+2) Alarm distribution
+Using live DB context from MCP, return alarm counts by severity for the active shift and compare against previous shift.
+
+3) Downtime causes
+Query downtime events for the last 24 hours and return top 5 reason codes by total minutes, separated by planned/unplanned.
+
+4) Shift OEE snapshot
+Compute shift-level OEE by line and machine from live data. Return Availability, Performance, Quality, OEE, plus assumptions.
+
+5) Data quality check
+Identify rows with suspicious telemetry (negative counts, null machine ids, impossible timestamps) and return remediation SQL.
